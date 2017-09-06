@@ -105,7 +105,7 @@ line1 = plt.plot(m1_roundOpinions, color = "#000080") # blue
 line2 = plt.plot(m0_roundOpinions, color = "#b30000") # red
 line3 = plt.plot((0, 9000), (np.mean(m1_round0Opinions), np.mean(m1_round0Opinions)), '#8080ff') # lightblue
 line4 = plt.plot((0, 9000), (np.mean(m0_round0Opinions), np.mean(m1_round0Opinions)), '#ff6666') # lightred
-line5 = plt.plot((3000, 3000), (0.55, 0.50), 'green') # green - new types of outlets
+line5 = plt.plot((3000, 3000), (0.535, 0.50), 'green') # green - new types of outlets
 
 blue_patch = mpatches.Patch(color='#000080', label='Vocalized Opinions (M1)') # blue
 red_patch = mpatches.Patch(color='#b30000', label='Vocalized Opinions (M0)') # red
@@ -149,7 +149,7 @@ line1 = plt.plot(m2_roundOpinions, color = "#000080") # blue
 line2 = plt.plot(m0_roundOpinions, color = "#b30000") # red
 line3 = plt.plot((0, 9000), (np.mean(m2_round0Opinions), np.mean(m2_round0Opinions)), '#8080ff') # lightblue
 line4 = plt.plot((0, 9000), (np.mean(m0_round0Opinions), np.mean(m0_round0Opinions)), '#ff6666') # lightred
-line5 = plt.plot((3000, 3000), (0.55, 0.50), 'orange') # orange - recommender algorithms
+line5 = plt.plot((3000, 3000), (0.535, 0.50), 'orange') # orange - recommender algorithms
 
 blue_patch = mpatches.Patch(color='#000080', label='Vocalized Opinions (M2)') # blue
 red_patch = mpatches.Patch(color='#b30000', label='Vocalized Opinions (M0)') # red
@@ -192,8 +192,8 @@ line1 = plt.plot(m3a_roundOpinions, color = "#000080") # blue
 line2 = plt.plot(m0_roundOpinions, color = "#b30000") # red
 line3 = plt.plot((0, 9000), (np.mean(m3a_round0Opinions), np.mean(m3a_round0Opinions)), '#8080ff') # lightblue
 line4 = plt.plot((0, 9000), (np.mean(m0_round0Opinions), np.mean(m0_round0Opinions)), '#ff6666') # lightred
-line5 = plt.plot((3000, 3000), (0.5, 0.55), 'green') # green - new media outlets
-line6 = plt.plot((6000, 6000), (0.5, 0.55), 'orange') # orange - recommender algorithms
+line5 = plt.plot((3000, 3000), (0.5, 0.535), 'green') # green - new media outlets
+line6 = plt.plot((6000, 6000), (0.5, 0.535), 'orange') # orange - recommender algorithms
 
 blue_patch = mpatches.Patch(color='#000080', label='Vocalized Opinions (M3a)') # blue
 red_patch = mpatches.Patch(color='#b30000', label='Vocalized Opinions (M0)') # red
@@ -239,8 +239,8 @@ line1 = plt.plot(m3b_roundOpinions, color = "#000080") # blue
 line2 = plt.plot(m0_roundOpinions, color = "#b30000") # red
 line3 = plt.plot((0, 9000), (np.mean(m3b_round0Opinions), np.mean(m3b_round0Opinions)), '#8080ff') # lightblue
 line4 = plt.plot((0, 9000), (np.mean(m0_round0Opinions), np.mean(m0_round0Opinions)), '#ff6666') # lightred
-line5 = plt.plot((3000, 3000), (0.5, 0.55), 'orange') # orange - recommender algorithms
-line6 = plt.plot((6000, 6000), (0.5, 0.55), 'green') # green - new media outlets
+line5 = plt.plot((3000, 3000), (0.5, 0.535), 'orange') # orange - recommender algorithms
+line6 = plt.plot((6000, 6000), (0.5, 0.535), 'green') # green - new media outlets
 
 blue_patch = mpatches.Patch(color='#000080', label='Vocalized Opinions (M3b)') # blue
 red_patch = mpatches.Patch(color='#b30000', label='Vocalized Opinions (M0)') # red

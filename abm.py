@@ -379,8 +379,6 @@ for i in range(0, 3000):
 basem0 = copy.deepcopy(basem)
 basem1 = copy.deepcopy(basem)
 basem2 = copy.deepcopy(basem)
-basem3a = copy.deepcopy(basem)
-basem3b = copy.deepcopy(basem)
 
 print "Basic run further"
 for i in range(0, 6000):
@@ -390,41 +388,61 @@ save_object(basem0.interactions, 'interactions_m0.pkl')
 save_object(basem0.statuses, 'statuses_m0.pkl')
 
 # M1
+thirdModel = False
 basem1.enterNewMediaAge()
 for i in range(0, 6000):
     print "Step " + str(i) + " of Model 1"
+    if i == 3000:
+        basem3a = copy.deepcopy(basem1)
+        basem3a.activateRecommenderAlgorithms()
+        thirdModel = True
     basem1.step()
+    if thirdModel:
+        print "Step " + str(i) + " of Model 3b"
+        basem3a.step()
 save_object(basem1.interactions, 'interactions_m1.pkl')
 save_object(basem1.statuses, 'statuses_m1.pkl')
-
-# M2
-basem2.activateRecommenderAlgorithms()
-for i in range(0, 6000):
-    print "Step " + str(i) + " of Model 2"
-    basem2.step()
-save_object(basem2.interactions, 'interactions_m2.pkl')
-save_object(basem2.statuses, 'statuses_m2.pkl')
-
-
-# M3a
-basem3a.enterNewMediaAge()
-for i in range(0, 6000):
-    print "Step " + str(i) + " of Model 3a"
-    if basem3a.currentRound == 6000:
-        basem3a.activateRecommenderAlgorithms()
-    basem3a.step()
 save_object(basem3a.interactions, 'interactions_m3a.pkl')
 save_object(basem3a.statuses, 'statuses_m3a.pkl')
 
-# M3b
-basem3b.activateRecommenderAlgorithms()
+# M2
+thirdModel = False
+basem2.activateRecommenderAlgorithms()
 for i in range(0, 6000):
-    print "Step " + str(i) + " of Model 3b"
-    if basem3b.currentRound == 6000:
+    print "Step " + str(i) + " of Model 2"
+    if i == 30000:
+        basem3b = copy.deepcopy(basem2)
         basem3b.enterNewMediaAge()
-    basem3b.step()
+        thirdModel = True
+    basem2.step()
+    if thirdModel:
+        print "Step " + str(i) + " of Model 3b"
+        basem3b.step()
+save_object(basem2.interactions, 'interactions_m2.pkl')
+save_object(basem2.statuses, 'statuses_m2.pkl')
 save_object(basem3b.interactions, 'interactions_m3b.pkl')
 save_object(basem3b.statuses, 'statuses_m3b.pkl')
+
+#
+# # M3a
+# basem3a.enterNewMediaAge()
+# for i in range(0, 6000):
+#     print "Step " + str(i) + " of Model 3a"
+#     if i == 3000:
+#         basem3a.activateRecommenderAlgorithms()
+#     basem3a.step()
+# save_object(basem3a.interactions, 'interactions_m3a.pkl')
+# save_object(basem3a.statuses, 'statuses_m3a.pkl')
+#
+# # M3b
+# basem3b.activateRecommenderAlgorithms()
+# for i in range(0, 6000):
+#     print "Step " + str(i) + " of Model 3b"
+#     if i == 3000:
+#         basem3b.enterNewMediaAge()
+#     basem3b.step()
+# save_object(basem3b.interactions, 'interactions_m3b.pkl')
+# save_object(basem3b.statuses, 'statuses_m3b.pkl')
 
 
 print "Loading M0"

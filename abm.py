@@ -144,7 +144,7 @@ class Agent(object):
         minPos = int(max(0, ownIndex - 2 * self.model.maxFriends))
 
         candidate = self.friends[0]
-        while candidate in self.friends:
+        while candidate in [self.friends, self]: # should not be a friend already and not agent herself
             candidate = self.model.agOpSort[random.sample(range(minPos, maxPos), 1)[0]]
         self.friends.append(candidate)
         self.friends.remove(friendToRemove)
@@ -186,17 +186,18 @@ class Agent(object):
         # print "A Parameter: "+str(self.opinionBetaA)
         # print "B Parameter: "+str(self.opinionBetaB)
         # Documentation of status to analyze later
-        friendOpinions = []
-        aboOpinions = []
-        friendIds = []
-        aboIds = []
-        for friend in self.friends:
-            friendOpinions.append(friend.medianOpinion)
-            friendIds.append(friend.id)
-        for abo in self.abos:
-            aboOpinions.append(abo.medianOpinion)
-            aboIds.append(abo.id)
+
         if self.model.currentRound == 0:
+            friendOpinions = []
+            aboOpinions = []
+            friendIds = []
+            aboIds = []
+            for friend in self.friends:
+                friendOpinions.append(friend.medianOpinion)
+                friendIds.append(friend.id)
+            for abo in self.abos:
+                aboOpinions.append(abo.medianOpinion)
+                aboIds.append(abo.id)
             self.model.statuses.append([self.model.currentRound, self.id, self.medianOpinion, friendIds, friendOpinions, aboIds, aboOpinions])
         # print "Own Medianopinion: "+str(self.medianOpinion)
 
@@ -326,6 +327,8 @@ class Model(object):
             maxPos = int(min(self.noAgents, index + 4 * self.maxFriends))  # Minimum ID
             minPos = int(max(0, index - 4 * self.maxFriends))  # Maximum ID
             idSample = random.sample(range(minPos, maxPos), numberOfFriends)  # draw friends ID randomly
+            while index in idSample:
+                idSample = random.sample(range(minPos, maxPos), numberOfFriends) # draw again, if the agents herself is in the sample
             for agentID in idSample:
                 # One Way Connection: works like an abonnement of friends/influences
                 agent.formLink(self.agOpSort[agentID])

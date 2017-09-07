@@ -401,7 +401,7 @@ for i in range(0, 6000):
         thirdModel = True
     basem1.step()
     if thirdModel:
-        print "Step " + str(i) + " of Model 3b"
+        print "Step " + str(i) + " of Model 3a"
         basem3a.step()
 save_object(basem1.interactions, 'interactions_m1.pkl')
 save_object(basem1.statuses, 'statuses_m1.pkl')
@@ -413,7 +413,7 @@ thirdModel = False
 basem2.activateRecommenderAlgorithms()
 for i in range(0, 6000):
     print "Step " + str(i) + " of Model 2"
-    if i == 30000:
+    if i == 3000:
         basem3b = copy.deepcopy(basem2)
         basem3b.enterNewMediaAge()
         thirdModel = True

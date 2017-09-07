@@ -371,98 +371,95 @@ class Model(object):
             agent.favorites.append(findNearest(np.array(availableArticles), agent.medianOpinion))
 
 
-# Baseline Model
-print "Basic run"
-basem = Model(1, noAgents=1000, maxFriends=10, minFriends=5)
-for i in range(0, 3000):
-    print "Step "+str(i)+" of Baseline Model"
-    basem.step()
-# save_object(basem.interactions, 'interactions_bm.pkl')
-# save_object(basem.statuses, 'statuses_bm.pkl')
-basem0 = copy.deepcopy(basem)
-basem1 = copy.deepcopy(basem)
-basem2 = copy.deepcopy(basem)
-
-print "Basic run further"
-for i in range(0, 6000):
-    print "Step "+str(i)+" of Model 0"
-    basem0.step()
-save_object(basem0.interactions, 'interactions_m0.pkl')
-save_object(basem0.statuses, 'statuses_m0.pkl')
-
-# M1
-thirdModel = False
-basem1.enterNewMediaAge()
-for i in range(0, 6000):
-    print "Step " + str(i) + " of Model 1"
-    if i == 3000:
-        basem3a = copy.deepcopy(basem1)
-        basem3a.activateRecommenderAlgorithms()
-        thirdModel = True
-    basem1.step()
-    if thirdModel:
-        print "Step " + str(i) + " of Model 3a"
-        basem3a.step()
-save_object(basem1.interactions, 'interactions_m1.pkl')
-save_object(basem1.statuses, 'statuses_m1.pkl')
-save_object(basem3a.interactions, 'interactions_m3a.pkl')
-save_object(basem3a.statuses, 'statuses_m3a.pkl')
-
-# M2
-thirdModel = False
-basem2.activateRecommenderAlgorithms()
-for i in range(0, 6000):
-    print "Step " + str(i) + " of Model 2"
-    if i == 3000:
-        basem3b = copy.deepcopy(basem2)
-        basem3b.enterNewMediaAge()
-        thirdModel = True
-    basem2.step()
-    if thirdModel:
-        print "Step " + str(i) + " of Model 3b"
-        basem3b.step()
-save_object(basem2.interactions, 'interactions_m2.pkl')
-save_object(basem2.statuses, 'statuses_m2.pkl')
-save_object(basem3b.interactions, 'interactions_m3b.pkl')
-save_object(basem3b.statuses, 'statuses_m3b.pkl')
-
+# # Baseline Model
+# print "Basic run"
+# basem = Model(1, noAgents=1000, maxFriends=10, minFriends=5)
+# for i in range(0, 3000):
+#     print "Step "+str(i)+" of Baseline Model"
+#     basem.step()
+# # save_object(basem.interactions, 'interactions_bm.pkl')
+# # save_object(basem.statuses, 'statuses_bm.pkl')
+# basem0 = copy.deepcopy(basem)
+# basem1 = copy.deepcopy(basem)
+# basem2 = copy.deepcopy(basem)
 #
-# # M3a
-# basem3a.enterNewMediaAge()
+# print "Basic run further"
 # for i in range(0, 6000):
-#     print "Step " + str(i) + " of Model 3a"
+#     print "Step "+str(i)+" of Model 0"
+#     basem0.step()
+# save_object(basem0.interactions, 'interactions_m0.pkl')
+# save_object(basem0.statuses, 'statuses_m0.pkl')
+#
+# # M1 and 3a
+# thirdModel = False
+# basem1.enterNewMediaAge()
+# for i in range(0, 6000):
+#     print "Step " + str(i) + " of Model 1"
 #     if i == 3000:
+#         basem3a = copy.deepcopy(basem1)
 #         basem3a.activateRecommenderAlgorithms()
-#     basem3a.step()
+#         thirdModel = True
+#     basem1.step()
+#     if thirdModel:
+#         print "Step " + str(i) + " of Model 3a"
+#         basem3a.step()
+# save_object(basem1.interactions, 'interactions_m1.pkl')
+# save_object(basem1.statuses, 'statuses_m1.pkl')
 # save_object(basem3a.interactions, 'interactions_m3a.pkl')
 # save_object(basem3a.statuses, 'statuses_m3a.pkl')
 #
-# # M3b
-# basem3b.activateRecommenderAlgorithms()
+# # M2 and 3b
+# thirdModel = False
+# basem2.activateRecommenderAlgorithms()
 # for i in range(0, 6000):
-#     print "Step " + str(i) + " of Model 3b"
+#     print "Step " + str(i) + " of Model 2"
 #     if i == 3000:
+#         basem3b = copy.deepcopy(basem2)
 #         basem3b.enterNewMediaAge()
-#     basem3b.step()
+#         thirdModel = True
+#     basem2.step()
+#     if thirdModel:
+#         print "Step " + str(i) + " of Model 3b"
+#         basem3b.step()
+# save_object(basem2.interactions, 'interactions_m2.pkl')
+# save_object(basem2.statuses, 'statuses_m2.pkl')
 # save_object(basem3b.interactions, 'interactions_m3b.pkl')
 # save_object(basem3b.statuses, 'statuses_m3b.pkl')
 
 
 print "Loading M0"
-interactions_m0 = basem0.interactions
-statuses_m0 = basem0.statuses
+# interactions_m0 = basem0.interactions
+# statuses_m0 = basem0.statuses
+with open('interactions_m0.pkl', 'rb') as input:
+    interactions_m0 = pickle.load(input)
+with open('statuses_m0.pkl', 'rb') as input:
+    statuses_m0 = pickle.load(input)
 print "Loading M1"
-interactions_m1 = basem1.interactions
-statuses_m1 = basem1.statuses
+# interactions_m1 = basem1.interactions
+# statuses_m1 = basem1.statuses
+with open('interactions_m1.pkl', 'rb') as input:
+    interactions_m1 = pickle.load(input)
+with open('statuses_m1.pkl', 'rb') as input:
+    statuses_m1 = pickle.load(input)
 print "Loading M2"
-interactions_m2 = basem2.interactions
-statuses_m2 = basem2.statuses
+# interactions_m2 = basem2.interactions
+# statuses_m2 = basem2.statuses
+with open('interactions_m2.pkl', 'rb') as input:
+    interactions_m2 = pickle.load(input)
+with open('statuses_m2.pkl', 'rb') as input:
+    statuses_m2 = pickle.load(input)
 print "Loading M3a"
-interactions_m3a = basem3a.interactions
-statuses_m3a = basem3a.statuses
-print "Loading M3b"
-interactions_m3b = basem3b.interactions
-statuses_m3b = basem3b.statuses
+# interactions_m3a = basem3a.interactions
+# statuses_m3a = basem3a.statuses
+with open('interactions_m3a.pkl', 'rb') as input:
+    interactions_m3a = pickle.load(input)
+with open('statuses_m3a.pkl', 'rb') as input:
+    statuses_m3a = pickle.load(input)
+# print "Loading M3b"
+# interactions_m3b = basem3b.interactions
+# statuses_m3b = basem3b.statuses
+
+
 
 
 
@@ -472,29 +469,26 @@ m0_roundOpinions = []
 m0_roundOWNMEDIANS = []
 m0_roundSILENCES = []
 m0_roundTRADEOFFS = []
+for currentRound in range(9000):
+    m0_roundOpinions.append(0)
+    m0_roundOWNMEDIANS.append(0)
+    m0_roundSILENCES.append(0)
+    m0_roundTRADEOFFS.append(0)
 
-for currentRound in range(0, 9000):
-    roundOpinion = []
-    roundOWNMEDIAN = 0
-    roundSILENCE = 0
-    roundTRADEOFF = 0
-    for entry in interactions_m0:
-        if entry[0] == currentRound:
-            roundOpinion.append(entry[3])
-            if entry[4] == "OwnMedian":
-                roundOWNMEDIAN += 1
-            if entry[4] == "Silence":
-                roundSILENCE += 1
-            if entry[4] == "TradeOff":
-                roundTRADEOFF += 1
-    m0_roundOpinions.append(np.mean(roundOpinion))
-    m0_roundOWNMEDIANS.append(roundOWNMEDIAN)
-    m0_roundSILENCES.append(roundSILENCE)
-    m0_roundTRADEOFFS.append(roundTRADEOFF)
+for entry in interactions_m0:
+    m0_roundOpinions[entry[0]] = (m0_roundOpinions[entry[0]] * entry[0] + entry[3]) / (entry[0] + 1)# X_bar
+    if entry[4] == "OwnMedian":
+        m0_roundOWNMEDIANS[entry[0]] += 1
+    if entry[4] == "Silence":
+        m0_roundSILENCES[entry[0]] += 1
+    if entry[4] == "TradeOff":
+        m0_roundTRADEOFFS[entry[0]] += 1
+print "Round 0 Opinions saving"
 m0_round0Opinions = []
 for entry in statuses_m0:
     if entry[0] == 0:
         m0_round0Opinions.append(entry[2])
+
 print "Saving M0 preparations"
 save_object(m0_roundOpinions, 'm0_roundOpinions.pkl')
 save_object(m0_roundOWNMEDIANS, 'm0_roundOWNMEDIANS.pkl')
@@ -509,147 +503,130 @@ m1_roundOpinions = []
 m1_roundOWNMEDIANS = []
 m1_roundSILENCES = []
 m1_roundTRADEOFFS = []
+for currentRound in range(9000):
+    m1_roundOpinions.append(0)
+    m1_roundOWNMEDIANS.append(0)
+    m1_roundSILENCES.append(0)
+    m1_roundTRADEOFFS.append(0)
 
-for currentRound in range(0, 9000):
-    roundOpinion = []
-    roundOWNMEDIAN = 0
-    roundSILENCE = 0
-    roundTRADEOFF = 0
-    for entry in interactions_m1:
-        if entry[0] == currentRound:
-            roundOpinion.append(entry[3])
-            if entry[4] == "OwnMedian":
-                roundOWNMEDIAN += 1
-            if entry[4] == "Silence":
-                roundSILENCE += 1
-            if entry[4] == "TradeOff":
-                roundTRADEOFF += 1
-    m1_roundOpinions.append(np.mean(roundOpinion))
-    m1_roundOWNMEDIANS.append(roundOWNMEDIAN)
-    m1_roundSILENCES.append(roundSILENCE)
-    m1_roundTRADEOFFS.append(roundTRADEOFF)
-
+for entry in interactions_m1:
+    m1_roundOpinions[entry[0]] = (m1_roundOpinions[entry[0]] * entry[0] + entry[3]) / (entry[0] + 1)# X_bar
+    if entry[4] == "OwnMedian":
+        m1_roundOWNMEDIANS[entry[0]] += 1
+    if entry[4] == "Silence":
+        m1_roundSILENCES[entry[0]] += 1
+    if entry[4] == "TradeOff":
+        m1_roundTRADEOFFS[entry[0]] += 1
+print "Round 0 Opinions saving"
 m1_round0Opinions = []
 for entry in statuses_m1:
     if entry[0] == 0:
         m1_round0Opinions.append(entry[2])
-print "Saving Model 1 preparations"
+
+print "Saving M1 preparations"
 save_object(m1_roundOpinions, 'm1_roundOpinions.pkl')
 save_object(m1_roundOWNMEDIANS, 'm1_roundOWNMEDIANS.pkl')
 save_object(m1_roundSILENCES, 'm1_roundSILENCES.pkl')
 save_object(m1_roundTRADEOFFS, 'm1_roundTRADEOFFS.pkl')
 save_object(m1_round0Opinions, 'm1_round0Opinions.pkl')
 
-
 print "Processing M2"
-## Second Model
+## Second Model m2
 m2_roundOpinions = []
 m2_roundOWNMEDIANS = []
 m2_roundSILENCES = []
 m2_roundTRADEOFFS = []
+for currentRound in range(9000):
+    m2_roundOpinions.append(0)
+    m2_roundOWNMEDIANS.append(0)
+    m2_roundSILENCES.append(0)
+    m2_roundTRADEOFFS.append(0)
 
-for currentRound in range(0, 9000):
-    roundOpinion = []
-    roundOWNMEDIAN = 0
-    roundSILENCE = 0
-    roundTRADEOFF = 0
-    for entry in interactions_m2:
-        if entry[0] == currentRound:
-            roundOpinion.append(entry[3])
-            if entry[4] == "OwnMedian":
-                roundOWNMEDIAN += 1
-            if entry[4] == "Silence":
-                roundSILENCE += 1
-            if entry[4] == "TradeOff":
-                roundTRADEOFF += 1
-    m2_roundOpinions.append(np.mean(roundOpinion))
-    m2_roundOWNMEDIANS.append(roundOWNMEDIAN)
-    m2_roundSILENCES.append(roundSILENCE)
-    m2_roundTRADEOFFS.append(roundTRADEOFF)
-
+for entry in interactions_m2:
+    m2_roundOpinions[entry[0]] = (m2_roundOpinions[entry[0]] * entry[0] + entry[3]) / (entry[0] + 1)# X_bar
+    if entry[4] == "OwnMedian":
+        m2_roundOWNMEDIANS[entry[0]] += 1
+    if entry[4] == "Silence":
+        m2_roundSILENCES[entry[0]] += 1
+    if entry[4] == "TradeOff":
+        m2_roundTRADEOFFS[entry[0]] += 1
 m2_round0Opinions = []
 for entry in statuses_m2:
     if entry[0] == 0:
         m2_round0Opinions.append(entry[2])
 
-print "Saving Model 2 preparations"
+print "Saving M2 preparations"
 save_object(m2_roundOpinions, 'm2_roundOpinions.pkl')
 save_object(m2_roundOWNMEDIANS, 'm2_roundOWNMEDIANS.pkl')
 save_object(m2_roundSILENCES, 'm2_roundSILENCES.pkl')
 save_object(m2_roundTRADEOFFS, 'm2_roundTRADEOFFS.pkl')
 save_object(m2_round0Opinions, 'm2_round0Opinions.pkl')
-
-print "Processing M3a"
-## Third Model (a)
+#
+# print "Processing M3a"
 m3a_roundOpinions = []
 m3a_roundOWNMEDIANS = []
 m3a_roundSILENCES = []
 m3a_roundTRADEOFFS = []
+for currentRound in range(9000):
+    m3a_roundOpinions.append(0)
+    m3a_roundOWNMEDIANS.append(0)
+    m3a_roundSILENCES.append(0)
+    m3a_roundTRADEOFFS.append(0)
 
-for currentRound in range(0, 9000):
-    roundOpinion = []
-    roundOWNMEDIAN = 0
-    roundSILENCE = 0
-    roundTRADEOFF = 0
-    for entry in interactions_m3a:
-        if entry[0] == currentRound:
-            roundOpinion.append(entry[3])
-            if entry[4] == "OwnMedian":
-                roundOWNMEDIAN += 1
-            if entry[4] == "Silence":
-                roundSILENCE += 1
-            if entry[4] == "TradeOff":
-                roundTRADEOFF += 1
-    m3a_roundOpinions.append(np.mean(roundOpinion))
-    m3a_roundOWNMEDIANS.append(roundOWNMEDIAN)
-    m3a_roundSILENCES.append(roundSILENCE)
-    m3a_roundTRADEOFFS.append(roundTRADEOFF)
-
+for entry in interactions_m3a:
+    m3a_roundOpinions[entry[0]] = (m3a_roundOpinions[entry[0]] * entry[0] + entry[3]) / (entry[0] + 1)# X_bar
+    if entry[4] == "OwnMedian":
+        m3a_roundOWNMEDIANS[entry[0]] += 1
+    if entry[4] == "Silence":
+        m3a_roundSILENCES[entry[0]] += 1
+    if entry[4] == "TradeOff":
+        m3a_roundTRADEOFFS[entry[0]] += 1
 m3a_round0Opinions = []
 for entry in statuses_m3a:
     if entry[0] == 0:
         m3a_round0Opinions.append(entry[2])
-print "Saving Model 3a preparations"
+
+print "Saving M3a preparations"
 save_object(m3a_roundOpinions, 'm3a_roundOpinions.pkl')
 save_object(m3a_roundOWNMEDIANS, 'm3a_roundOWNMEDIANS.pkl')
 save_object(m3a_roundSILENCES, 'm3a_roundSILENCES.pkl')
 save_object(m3a_roundTRADEOFFS, 'm3a_roundTRADEOFFS.pkl')
 save_object(m3a_round0Opinions, 'm3a_round0Opinions.pkl')
-
-print "Processing M3b"
-## Third Model (b)
-m3b_roundOpinions = []
-m3b_roundOWNMEDIANS = []
-m3b_roundSILENCES = []
-m3b_roundTRADEOFFS = []
-
-for currentRound in range(0, 9000):
-    roundOpinion = []
-    roundOWNMEDIAN = 0
-    roundSILENCE = 0
-    roundTRADEOFF = 0
-    for entry in interactions_m3b:
-        if entry[0] == currentRound:
-            roundOpinion.append(entry[3])
-            if entry[4] == "OwnMedian":
-                roundOWNMEDIAN += 1
-            if entry[4] == "Silence":
-                roundSILENCE += 1
-            if entry[4] == "TradeOff":
-                roundTRADEOFF += 1
-    m3b_roundOpinions.append(np.mean(roundOpinion))
-    m3b_roundOWNMEDIANS.append(roundOWNMEDIAN)
-    m3b_roundSILENCES.append(roundSILENCE)
-    m3b_roundTRADEOFFS.append(roundTRADEOFF)
-
-m3b_round0Opinions = []
-for entry in statuses_m3b:
-    if entry[0] == 0:
-        m3b_round0Opinions.append(entry[2])
-print "Saving Model 3b preparations"
-save_object(m3b_roundOpinions, 'm3b_roundOpinions.pkl')
-save_object(m3b_roundOWNMEDIANS, 'm3b_roundOWNMEDIANS.pkl')
-save_object(m3b_roundSILENCES, 'm3b_roundSILENCES.pkl')
-save_object(m3b_roundTRADEOFFS, 'm3b_roundTRADEOFFS.pkl')
-save_object(m3b_round0Opinions, 'm3b_round0Opinions.pkl')
+#
+# print "Processing M3b"
+# ## Third Model (b)
+# m3b_roundOpinions = []
+# m3b_roundOWNMEDIANS = []
+# m3b_roundSILENCES = []
+# m3b_roundTRADEOFFS = []
+#
+# for currentRound in range(0, 9000):
+#     roundOpinion = []
+#     roundOWNMEDIAN = 0
+#     roundSILENCE = 0
+#     roundTRADEOFF = 0
+#     for entry in interactions_m3b:
+#         if entry[0] == currentRound:
+#             roundOpinion.append(entry[3])
+#             if entry[4] == "OwnMedian":
+#                 roundOWNMEDIAN += 1
+#             if entry[4] == "Silence":
+#                 roundSILENCE += 1
+#             if entry[4] == "TradeOff":
+#                 roundTRADEOFF += 1
+#     m3b_roundOpinions.append(np.mean(roundOpinion))
+#     m3b_roundOWNMEDIANS.append(roundOWNMEDIAN)
+#     m3b_roundSILENCES.append(roundSILENCE)
+#     m3b_roundTRADEOFFS.append(roundTRADEOFF)
+#
+# m3b_round0Opinions = []
+# for entry in statuses_m3b:
+#     if entry[0] == 0:
+#         m3b_round0Opinions.append(entry[2])
+# print "Saving Model 3b preparations"
+# save_object(m3b_roundOpinions, 'm3b_roundOpinions.pkl')
+# save_object(m3b_roundOWNMEDIANS, 'm3b_roundOWNMEDIANS.pkl')
+# save_object(m3b_roundSILENCES, 'm3b_roundSILENCES.pkl')
+# save_object(m3b_roundTRADEOFFS, 'm3b_roundTRADEOFFS.pkl')
+# save_object(m3b_round0Opinions, 'm3b_round0Opinions.pkl')
 

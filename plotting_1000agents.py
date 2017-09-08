@@ -105,7 +105,7 @@ line1 = plt.plot(m1_roundOpinions, color = "#000080") # blue
 line2 = plt.plot(m0_roundOpinions, color = "#b30000") # red
 line3 = plt.plot((0, 9000), (np.mean(m1_round0Opinions), np.mean(m1_round0Opinions)), '#8080ff') # lightblue
 line4 = plt.plot((0, 9000), (np.mean(m0_round0Opinions), np.mean(m1_round0Opinions)), '#ff6666') # lightred
-line5 = plt.plot((3000, 3000), (0.535, 0.50), 'green') # green - new types of outlets
+line5 = plt.plot((3000, 3000), (0.51, 0.48), 'green', linewidth=2.5) # green - new types of outlets
 
 blue_patch = mpatches.Patch(color='#000080', label='Vocalized Opinions (M1)') # blue
 red_patch = mpatches.Patch(color='#b30000', label='Vocalized Opinions (M0)') # red
@@ -125,7 +125,7 @@ line2 = plt.plot(m1_roundTRADEOFFS, color = "black") # black
 line2_5 = plt.plot(m0_roundTRADEOFFS, color = "#5c0099") #violet
 line3 = plt.plot(m1_roundSILENCES, color = "#b30000") # red
 line3_5 = plt.plot(m0_roundSILENCES, color = "#ff6666") #lightred
-line4 = plt.plot((3000, 3000), (0, 1000), 'green') # green - new types of outlets
+line4 = plt.plot((3000, 3000), (0, 1000), 'green', linewidth=2.5) # green - new types of outlets
 
 blue_patch = mpatches.Patch(color='#000080', label='Vocalization of Own Median (M1)') # blue
 lightblue_patch = mpatches.Patch(color='#8080ff', label='Vocalization of Own Median (M0)') # lightblue
@@ -149,7 +149,7 @@ line1 = plt.plot(m2_roundOpinions, color = "#000080") # blue
 line2 = plt.plot(m0_roundOpinions, color = "#b30000") # red
 line3 = plt.plot((0, 9000), (np.mean(m2_round0Opinions), np.mean(m2_round0Opinions)), '#8080ff') # lightblue
 line4 = plt.plot((0, 9000), (np.mean(m0_round0Opinions), np.mean(m0_round0Opinions)), '#ff6666') # lightred
-line5 = plt.plot((3000, 3000), (0.535, 0.50), 'orange') # orange - recommender algorithms
+line5 = plt.plot((3000, 3000), (0.505, 0.48), 'orange', linewidth=2.5) # orange - recommender algorithms
 
 blue_patch = mpatches.Patch(color='#000080', label='Vocalized Opinions (M2)') # blue
 red_patch = mpatches.Patch(color='#b30000', label='Vocalized Opinions (M0)') # red
@@ -169,7 +169,7 @@ line2 = plt.plot(m2_roundTRADEOFFS, color = "black") # black
 line2_5 = plt.plot(m0_roundTRADEOFFS, color = "#5c0099") #violet
 line3 = plt.plot(m2_roundSILENCES, color = "#b30000") # red
 line3_5 = plt.plot(m0_roundSILENCES, color = "#ff6666") #lightred
-line4 = plt.plot((3000, 3000), (0, 1000), 'orange') # orange - recommender algo
+line4 = plt.plot((3000, 3000), (0, 1000), 'orange', linewidth=2.5) # orange - recommender algo
 
 blue_patch = mpatches.Patch(color='#000080', label='Vocalization of Own Median (M2)') # blue
 lightblue_patch = mpatches.Patch(color='#8080ff', label='Vocalization of Own Median (M0)') # lightblue
@@ -192,8 +192,8 @@ line1 = plt.plot(m3a_roundOpinions, color = "#000080") # blue
 line2 = plt.plot(m0_roundOpinions, color = "#b30000") # red
 line3 = plt.plot((0, 9000), (np.mean(m3a_round0Opinions), np.mean(m3a_round0Opinions)), '#8080ff') # lightblue
 line4 = plt.plot((0, 9000), (np.mean(m0_round0Opinions), np.mean(m0_round0Opinions)), '#ff6666') # lightred
-line5 = plt.plot((3000, 3000), (0.5, 0.535), 'green') # green - new media outlets
-line6 = plt.plot((6000, 6000), (0.5, 0.535), 'orange') # orange - recommender algorithms
+line5 = plt.plot((3000, 3000), (0.51, 0.48), 'green', linewidth = 2.5) # green - new media outlets
+line6 = plt.plot((6000, 6000), (0.51, 0.48), 'orange', linewidth = 2.5) # orange - recommender algorithms
 
 blue_patch = mpatches.Patch(color='#000080', label='Vocalized Opinions (M3a)') # blue
 red_patch = mpatches.Patch(color='#b30000', label='Vocalized Opinions (M0)') # red
@@ -214,8 +214,8 @@ line2 = plt.plot(m3a_roundTRADEOFFS, color = "black") # black
 line2_5 = plt.plot(m0_roundTRADEOFFS, color = "#5c0099") #violet
 line3 = plt.plot(m3a_roundSILENCES, color = "#b30000") # red
 line3_5 = plt.plot(m0_roundSILENCES, color = "#ff6666") #lightred
-line4 = plt.plot((3000, 3000), (0, 1000), 'green') # green - new media outlets
-line5 = plt.plot((6000, 6000), (0, 1000), 'orange') # orange - recommender algo
+line4 = plt.plot((3000, 3000), (0, 1000), 'green', linewidth=2.5) # green - new media outlets
+line5 = plt.plot((6000, 6000), (0, 1000), 'orange', linewidth=2.5) # orange - recommender algo
 
 blue_patch = mpatches.Patch(color='#000080', label='Vocalization of Own Median (M3a)') # blue
 lightblue_patch = mpatches.Patch(color='#8080ff', label='Vocalization of Own Median (M0)') # lightblue
@@ -239,8 +239,8 @@ line1 = plt.plot(m3b_roundOpinions, color = "#000080") # blue
 line2 = plt.plot(m0_roundOpinions, color = "#b30000") # red
 line3 = plt.plot((0, 9000), (np.mean(m3b_round0Opinions), np.mean(m3b_round0Opinions)), '#8080ff') # lightblue
 line4 = plt.plot((0, 9000), (np.mean(m0_round0Opinions), np.mean(m0_round0Opinions)), '#ff6666') # lightred
-line5 = plt.plot((3000, 3000), (0.5, 0.535), 'orange') # orange - recommender algorithms
-line6 = plt.plot((6000, 6000), (0.5, 0.535), 'green') # green - new media outlets
+line5 = plt.plot((3000, 3000), (0.505, 0.48), 'orange', linewidth=2.5) # orange - recommender algorithms
+line6 = plt.plot((6000, 6000), (0.505, 0.48), 'green', linewidth=2.5) # green - new media outlets
 
 blue_patch = mpatches.Patch(color='#000080', label='Vocalized Opinions (M3b)') # blue
 red_patch = mpatches.Patch(color='#b30000', label='Vocalized Opinions (M0)') # red
@@ -262,8 +262,8 @@ line2 = plt.plot(m3b_roundTRADEOFFS, color = "black") # black
 line2_5 = plt.plot(m0_roundTRADEOFFS, color = "#5c0099") #violet
 line3 = plt.plot(m3b_roundSILENCES, color = "#b30000") # red
 line3_5 = plt.plot(m0_roundSILENCES, color = "#ff6666") #lightred
-line4 = plt.plot((3000, 3000), (0, 1000), 'orange') # orange - recommender algo
-line5 = plt.plot((6000, 6000), (0, 1000), 'green') # green - new media outlets
+line4 = plt.plot((3000, 3000), (0, 1000), 'orange', linewidth=2.5) # orange - recommender algo
+line5 = plt.plot((6000, 6000), (0, 1000), 'green', linewidth=2.5) # green - new media outlets
 
 blue_patch = mpatches.Patch(color='#000080', label='Vocalization of Own Median (M3b)') # blue
 lightblue_patch = mpatches.Patch(color='#8080ff', label='Vocalization of Own Median (M0)') # lightblue
